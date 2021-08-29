@@ -33,5 +33,6 @@ Do these tasks in sequence from the start, don't skip any task to work for the n
     - a. Show us the code, or
     - b. Tell us how by pseudo code or algorithm
 
-
+## Answer
+3. b. Linear (O(n))
 
