@@ -35,4 +35,5 @@ Do these tasks in sequence from the start, don't skip any task to work for the n
 
 ## Answer
 3. b. Linear (O(n))
+4. You can not change those cases (get, update, delete element of array) to constant because eventually you must use either filter, find or find index and those are linear complexity.
 
