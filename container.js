@@ -29,11 +29,18 @@ class Container {
      * Add new item if productId not already exist either way update qty
      */
      const i = this.storage.findIndex(data => data.productId === productId);
-     console.log(i)
      let data = { productId, qty }
-     if (i > -1) this.storage[i] = data
-     else this.storage.push(data);
-     return data
+    //  if (i > -1) this.storage[i] = data
+    //  else this.storage.push(data);
+    //  return data
+    let isSaved = false;
+    if (i > -1) {
+      this.storage[i] = data
+    } else {
+      this.storage.push(data);
+      isSaved = true;
+    }
+    return isSaved;
   }
 
   delete(productId) {

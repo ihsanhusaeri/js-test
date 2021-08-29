@@ -35,15 +35,18 @@ describe('Test class container', () => {
   * assert it returning equal to {productId: '01', 1}
   */
   test("Put storage", () => {
-    let productId = '03'
+    let product1 = { productId: "03", qty: 1 }
     const c = new Container([
-      { productId: productId, qty: 1 }
+      product1
     ])
-    productId = '05'
-    const putData = {productId, qty: 5}
-    const put = c.put(putData)
-    console.log(c)
-    expect(put).toEqual(putData)
+    let product2 = {productId: '03', qty: 5}
+    const isSaved = c.put(product2)
+    
+    if(isSaved) {
+      expect(c.storage).toEqual([product1, product2])
+    } else {
+      expect(c.storage).toEqual([product2])
+    }
   })
 
   /**
