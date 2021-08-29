@@ -13,21 +13,31 @@ class Container {
      * Dont remove this setTimeout, assume there is an I/O delay to get the result of querying the storarage.
      * Offcourse you can modify the code, but the return value must be call inside setTimeout.
      */
-    setTimeout(() => {
-      const product = this.storage
+    let storage = this.storage;
+    var promise = new Promise(function(resolve, reject) {
+      setTimeout(() => {
+        const product = storage
         .find(product => product.productId === productId);
-      return product;
-    }, 1000)
+        resolve(product);
+      }, 1000);
+    });
+    return promise;
   }
 
   put({ productId, qty }) {
     /**
      * Add new item if productId not already exist either way update qty
      */
+     const i = this.storage.findIndex(data => data.productId === productId);
+     console.log(i)
+     let data = { productId, qty }
+     if (i > -1) this.storage[i] = data
+     else this.storage.push(data);
+     return data
   }
 
   delete(productId) {
-
+    this.storage = this.storage.filter(data => data.productId !== productId);
   }
 }
 
